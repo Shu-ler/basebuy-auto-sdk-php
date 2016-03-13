@@ -1,0 +1,20 @@
+{
+  "name": "basebuy/basebuy-sdk-php",
+  "description": "Wrapper for BasebuyAutoApi",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Ivan Ognev",
+      "email": "info@basebuy.ru"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "basebuy\\basebuyAutoApi\\": ""
+    }
+  },
+  "require": {
+    "php-curl-class/php-curl-class": "^4.11"
+  }
+}
