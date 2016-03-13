@@ -48,6 +48,7 @@ Note: `API_KEY` is constant that you get for access to BaseBuy.Auto API.
 ## Side notes
 
 1. Library throws exceptions in case of
+```php
     * response status isn't equal 2**
     * I/O error(see [requests](https://github.com/rmccue/Requests))
 ```
