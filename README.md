@@ -16,7 +16,7 @@ PHP 5.3 or above
 
 1. Clone repo to your project.
 2. Paste following code
-    ```php
+    ```
     require_once '/path/to/cloned/repo/BasebuyAutoApi.php';
     ```
 
@@ -27,7 +27,7 @@ Note: `API_KEY` is constant that you get for access to BaseBuy.Auto API.
 
 2. Than you can use BaseBuy.Auto API.
 
-    ```php
+    ```
     $basebuyAutoApi = new BasebuyAutoApi(
         new CurlGetConnector( API_KEY )
     );
@@ -49,7 +49,8 @@ Note: `API_KEY` is constant that you get for access to BaseBuy.Auto API.
 ## Side notes
 
 1. Library throws exceptions in case of
-    ```php
+
+    ```
     * response status isn't equal 2**
     * I/O error(see [requests](https://github.com/rmccue/Requests))
     ```
