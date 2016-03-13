@@ -18,6 +18,7 @@ PHP 5.3 or above
 2. Paste following code
     ```php
     require_once '/path/to/cloned/repo/BasebuyAutoApi.php';
+    ```
 
 Using BaseBuy.Auto API requires following steps
 
@@ -48,10 +49,10 @@ Note: `API_KEY` is constant that you get for access to BaseBuy.Auto API.
 ## Side notes
 
 1. Library throws exceptions in case of
-```php
+    ```php
     * response status isn't equal 2**
     * I/O error(see [requests](https://github.com/rmccue/Requests))
-```
+    ```
 
 
 ## Running tests
