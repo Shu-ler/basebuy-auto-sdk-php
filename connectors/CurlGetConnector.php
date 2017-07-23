@@ -17,6 +17,8 @@ class CurlGetConnector implements IConnector
 
     public $_tmp_dir;
 
+    public $timeout = 0; // 0 - without limit
+
     /**
      * SimpleConnector constructor.
      *
@@ -37,6 +39,7 @@ class CurlGetConnector implements IConnector
 
         $result = null;
         $curl = new Curl();
+        $curl->setOpt(CURLOPT_TIMEOUT, $this->timeout);
         $curl->get($this->_url.$method.'.'.$format, $this->addApiKey($params));
         if ($curl->error) {
             throw new EmptyResponseException( $curl->errorMessage,  $curl->errorCode );
@@ -59,6 +62,7 @@ class CurlGetConnector implements IConnector
 
         $resultFileName = $this->_tmp_dir.$method.'.'.$format;
         $curl = new Curl();
+        $curl->setOpt(CURLOPT_TIMEOUT, $this->timeout);
         if ( $curl->download($requestUrl, $resultFileName) ) {
             $result = $resultFileName;
         } else {
