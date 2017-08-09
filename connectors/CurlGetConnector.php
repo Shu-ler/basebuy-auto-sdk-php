@@ -26,11 +26,11 @@ class CurlGetConnector implements IConnector
      * @param string $url
      * @param string $tmp_dir
      */
-    public function __construct($api_kei, $url = 'http://api.basebuy.ru/api/auto/v1/', $tmp_dir = null)
+    public function __construct($api_kei, $url = 'https://api.basebuy.ru/api/auto/v1/', $tmp_dir = null)
     {
         $this->_api_kei = $api_kei;
         $this->_url     = $url;
-        $this->_tmp_dir = $tmp_dir ? $tmp_dir : $_SERVER['DOCUMENT_ROOT'].'/tmp/';
+        $this->_tmp_dir = $tmp_dir ? $tmp_dir : sys_get_temp_dir();
     }
 
 

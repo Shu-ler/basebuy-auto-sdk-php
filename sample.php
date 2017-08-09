@@ -6,47 +6,50 @@ use \basebuy\basebuyAutoApi\connectors\CurlGetConnector;
 use \basebuy\basebuyAutoApi\exceptions\EmptyResponseException;
 
 define ("API_KEY", "");
-$last_date_update = strtotime('01.01.2016 00:00:00'); // Дата последнего обращения к API, чтобы сперва сделать проверку, а уже потом выкачивать файлы
-$id_type = 1; // Легковые автомобили (полный список можно получить через $basebuyAutoApi->typeGetAll())
+define ("API_URL", "https://api.basebuy.ru/api/auto/v1/");
+$downloadFolder = $_SERVER['DOCUMENT_ROOT'];
+
+$lastDateUpdate = strtotime('01.01.2016 00:00:00'); // Дата последнего обращения к API, чтобы сперва сделать проверку, а уже потом выкачивать файлы
+$idType = 1; // Легковые автомобили (полный список можно получить через $basebuyAutoApi->typeGetAll())
 
 $basebuyAutoApi = new BasebuyAutoApi(
-    new CurlGetConnector( API_KEY )
+    new CurlGetConnector( API_KEY, API_URL, $downloadFolder)
 );
 
 try {
 
 
-    if ( $basebuyAutoApi->typeGetDateUpdate() > $last_date_update){
+    if ( $basebuyAutoApi->typeGetDateUpdate() > $lastDateUpdate){
         $downloadedFilePath = $basebuyAutoApi->typeGetAll();
     }
     /*
-        if ( $basebuyAutoApi->markGetDateUpdate( $id_type ) > $last_date_update){
-            print_r($basebuyAutoApi->markGetDateUpdate( $id_type, BasebuyAutoApi::FORMAT_STRING ));
-            $downloadedFilePath = $basebuyAutoApi->markGetAll( $id_type );
+        if ( $basebuyAutoApi->markGetDateUpdate( $idType ) > $lastDateUpdate){
+            print_r($basebuyAutoApi->markGetDateUpdate( $idType, BasebuyAutoApi::FORMAT_STRING ));
+            $downloadedFilePath = $basebuyAutoApi->markGetAll( $idType );
         }
 
-        if ( $basebuyAutoApi->modelGetDateUpdate( $id_type ) > $last_date_update){
-            $downloadedFilePath = $basebuyAutoApi->modelGetAll( $id_type );
+        if ( $basebuyAutoApi->modelGetDateUpdate( $idType ) > $lastDateUpdate){
+            $downloadedFilePath = $basebuyAutoApi->modelGetAll( $idType );
         }
 
-        if ( $basebuyAutoApi->generationGetDateUpdate( $id_type ) > $last_date_update){
-            $downloadedFilePath = $basebuyAutoApi->generationGetAll( $id_type );
+        if ( $basebuyAutoApi->generationGetDateUpdate( $idType ) > $lastDateUpdate){
+            $downloadedFilePath = $basebuyAutoApi->generationGetAll( $idType );
         }
 
-        if ( $basebuyAutoApi->serieGetDateUpdate( $id_type ) > $last_date_update){
-            $downloadedFilePath = $basebuyAutoApi->serieGetAll( $id_type );
+        if ( $basebuyAutoApi->serieGetDateUpdate( $idType ) > $lastDateUpdate){
+            $downloadedFilePath = $basebuyAutoApi->serieGetAll( $idType );
         }
 
-        if ( $basebuyAutoApi->modificationGetDateUpdate( $id_type ) > $last_date_update){
-            $downloadedFilePath = $basebuyAutoApi->modificationGetAll( $id_type );
+        if ( $basebuyAutoApi->modificationGetDateUpdate( $idType ) > $lastDateUpdate){
+            $downloadedFilePath = $basebuyAutoApi->modificationGetAll( $idType );
         }
 
-        if ( $basebuyAutoApi->characteristicGetDateUpdate( $id_type ) > $last_date_update){
-            $downloadedFilePath = $basebuyAutoApi->characteristicGetAll( $id_type );
+        if ( $basebuyAutoApi->characteristicGetDateUpdate( $idType ) > $lastDateUpdate){
+            $downloadedFilePath = $basebuyAutoApi->characteristicGetAll( $idType );
         }
 
-        if ( $basebuyAutoApi->characteristicValueGetDateUpdate( $id_type ) > $last_date_update){
-            $downloadedFilePath = $basebuyAutoApi->characteristicValueGetAll( $id_type );
+        if ( $basebuyAutoApi->characteristicValueGetDateUpdate( $idType ) > $lastDateUpdate){
+            $downloadedFilePath = $basebuyAutoApi->characteristicValueGetAll( $idType );
         }
         */
 
